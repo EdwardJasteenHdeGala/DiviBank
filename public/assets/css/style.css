@@ -1,0 +1,288 @@
+/* ===== Global Metallic Theme with DiviBank Green ===== */
+body {
+  background: linear-gradient(to bottom right, #1f2937, #0f172a); /* dark steel gradient */
+  color: #e5e7eb; /* light silver text */
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Headings */
+h1, h2, h3 {
+  font-family: 'Orbitron', sans-serif; /* futuristic metallic headings */
+  font-weight: 700;
+  color: #16a34a; /* DiviBank green */
+  text-shadow: 0 0 6px rgba(22,163,74,0.6); /* glowing metallic effect */
+}
+
+/* ===== Header & Navigation ===== */
+header {
+  background: linear-gradient(to right, #0f172a, #1f2937); /* metallic steel bar */
+  color: #16a34a;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.8);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+nav a {
+  margin-left: 1rem;
+  color: #e5e7eb;
+  text-decoration: none;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+nav a:hover {
+  color: #22c55e; /* lighter green hover */
+  text-shadow: 0 0 6px rgba(34,197,94,0.6);
+}
+
+/* ===== Container ===== */
+.container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* ===== Cards ===== */
+.card, .loan-card, .contact-card, .register-card, .login-card {
+  background: linear-gradient(145deg, #2d3748, #1f2937); /* brushed steel look */
+  border: 1px solid #4b5563;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: inset 0 0 12px rgba(22,163,74,0.25), 0 4px 12px rgba(0,0,0,0.6);
+  margin: 2rem auto;
+}
+.card h2, .loan-card h2, .contact-card h2, .register-card h2, .login-card h2 {
+  font-family: 'Orbitron', sans-serif;
+  color: #16a34a;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 4px rgba(22,163,74,0.5);
+}
+
+/* ===== Buttons ===== */
+button, .button-primary {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  background: linear-gradient(to right, #16a34a, #15803d); /* metallic green gradient */
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(22,163,74,0.5);
+  transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+}
+button:hover, .button-primary:hover {
+  background: linear-gradient(to right, #22c55e, #16a34a);
+  transform: translateY(-2px);
+  box-shadow: 0 0 12px rgba(34,197,94,0.7);
+}
+.button-group button {
+  margin-left: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+}
+.approve-btn { background: #16a34a; color: white; }
+.reject-btn { background: #dc2626; color: white; }
+
+/* ===== Secondary Buttons ===== */
+a.button-secondary {
+  background-color: #374151;
+  color: #e5e7eb;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  border: 1px solid #4b5563;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+a.button-secondary:hover {
+  background-color: #4b5563;
+  box-shadow: 0 0 8px rgba(22,163,74,0.4);
+}
+
+/* ===== Inputs ===== */
+input, textarea, select {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  border: 1px solid #4b5563;
+  background: #1f2937;
+  color: #e5e7eb;
+  font-family: 'Inter', sans-serif;
+}
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: #16a34a;
+  box-shadow: 0 0 8px rgba(22,163,74,0.6);
+}
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%23e5e7eb' height='20' viewBox='0 0 24 24' width='20'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+  padding-right: 2rem;
+}
+
+/* ===== Lists ===== */
+.loan-list, .transactions, .dues {
+  list-style: none;
+  padding: 0;
+}
+.loan-list li, .transactions li, .dues li {
+  border-bottom: 1px solid #4b5563;
+  padding: 0.75rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+.loan-list li:last-child, .transactions li:last-child, .dues li:last-child {
+  border-bottom: none;
+}
+
+/* ===== Status Colors ===== */
+.due-paid { color: #16a34a; }
+.due-pending { color: #f59e0b; }
+.due-overdue { color: #dc2626; }
+.loan-status { font-weight: 600; }
+
+/* ===== Verification Badges ===== */
+.verified-badge {
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+}
+.verified-true { background: #16a34a; color: white; }
+.verified-false { background: #dc2626; color: white; }
+
+/* ===== Progress Bar ===== */
+.progress-container {
+  width: 100%;
+  background: #1f2937;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+.progress-bar {
+  width: 0%;
+  height: 12px;
+  background: linear-gradient(to right, #16a34a, #22c55e);
+  border-radius: 8px;
+  transition: width 0.5s ease;
+}
+
+/* ===== Messages ===== */
+#msg, #loanMsg {
+  text-align: center;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+#msg.success, #loanMsg.success { color: #16a34a; }
+#msg.error, #loanMsg.error { color: #dc2626; }
+
+/* ===== Highlight Numbers ===== */
+.highlight {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #22c55e; /* brighter green for emphasis */
+  text-shadow: 0 0 6px rgba(34,197,94,0.6);
+}
+
+/* ===== Filter Bar ===== */
+.filter-bar {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.filter-bar input, .filter-bar select {
+  flex: 1;
+}
+
+/* ===== Loading & Empty States ===== */
+.loading {
+  text-align: center;
+  font-style: italic;
+  color: #9ca3af;
+}
+.empty {
+  text-align: center;
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+/* ===== Auth Pages (Login & Register) ===== */
+body.auth-page {
+  display: flex;
+  flex-direction: column;   /* ✅ stacks toggle + card vertically */
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.login-card, .register-card {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  cursor: pointer;
+}
+.toggle-password svg {
+  stroke: #16a34a;
+  transition: opacity 0.2s ease;
+}
+
+/* ===== Theme Toggle Button ===== */
+#themeToggle {
+  margin-bottom: 1rem;      /* ✅ sits neatly above card */
+  background: #16a34a;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 0.5rem;
+  }
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  nav {
+    margin-top: 0.5rem;
+  }
+  .card {
+    margin: 1rem auto;
+  }
+  .filter-bar {
+    flex-direction: column;
+  }
+  .login-card, .register-card {
+    margin: 1rem auto;
+    padding: 1.5rem;
+  }
+}

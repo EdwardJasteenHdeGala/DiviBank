@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DiviBank — Register</title>
+
+  <!-- ✅ Import Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Orbitron:wght@500;700&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- ✅ Metallic Theme Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    /* Center everything for auth pages */
+    body.auth-page {
+      background: linear-gradient(to bottom right, #1f2937, #0f172a);
+      color: #e5e7eb;
+      display: flex;
+      flex-direction: column;   /* ✅ stacks toggle + card vertically */
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+    }
+    body.auth-page.light-mode {
+      background: #f3f4f6;
+      color: #1f2937;
+    }
+
+    .register-card {
+      background: linear-gradient(145deg, #2d3748, #1f2937);
+      color: #e5e7eb;
+      padding: 2rem;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: inset 0 0 12px rgba(22,163,74,0.25), 0 4px 12px rgba(0,0,0,0.6);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .register-card.light-mode {
+      background: #ffffff;
+      color: #1f2937;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .register-card h1 {
+      margin-bottom: 0.5rem;
+      text-align: center;
+      font-family: 'Orbitron', sans-serif;
+      color: #16a34a;
+      text-shadow: 0 0 6px rgba(22,163,74,0.6);
+    }
+    .register-card h2 {
+      margin-bottom: 1rem;
+      text-align: center;
+      font-family: 'Orbitron', sans-serif;
+      color: #22c55e;
+    }
+
+    .register-card input {
+      width: 100%;
+      padding: 0.75rem;
+      border-radius: 6px;
+      border: 1px solid #4b5563;
+      background: #1f2937;
+      color: #e5e7eb;
+      font-family: 'Inter', sans-serif;
+    }
+    .register-card input.light-mode {
+      background: #ffffff;
+      color: #1f2937;
+      border: 1px solid #d1d5db;
+    }
+    .register-card input:focus {
+      outline: none;
+      border-color: #16a34a;
+      box-shadow: 0 0 8px rgba(22,163,74,0.6);
+    }
+
+    .password-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .toggle-password {
+      position: absolute;
+      right: 10px;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      cursor: pointer;
+    }
+    .toggle-password svg {
+      stroke: #16a34a;
+      transition: opacity 0.2s ease;
+    }
+
+    .register-card button {
+      width: 100%;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      background: linear-gradient(to right, #16a34a, #15803d);
+      color: white;
+      border: none;
+      padding: 0.75rem;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(22,163,74,0.5);
+      transition: background 0.2s ease, transform 0.1s ease;
+    }
+    .register-card button:hover {
+      background: linear-gradient(to right, #22c55e, #16a34a);
+      transform: translateY(-2px);
+      box-shadow: 0 0 12px rgba(34,197,94,0.7);
+    }
+
+    .register-card p {
+      text-align: center;
+      margin: 0.75rem 0 0;
+    }
+    .register-card a {
+      color: #16a34a;
+      font-weight: bold;
+      text-decoration: none;
+      text-shadow: 0 0 6px rgba(22,163,74,0.5);
+    }
+    .register-card a.light-mode {
+      text-shadow: none;
+      color: #15803d;
+    }
+
+    #msg {
+      text-align: center;
+      font-weight: 600;
+      margin-top: 0.5rem;
+    }
+    #msg.success { color: #16a34a; }
+    #msg.error { color: #dc2626; }
+
+    #themeToggle {
+      margin-bottom: 1rem;      /* ✅ sits neatly above card */
+      background: #16a34a;
+      color: white;
+      border: none;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
+</head>
+<body class="auth-page">
+  <button id="themeToggle">☀️ Light Mode</button>
+  <div class="register-card">
+    <h1>DiviBank</h1>
+    <h2>Create Your Account</h2>
+    <form id="registerForm">
+      <input id="name" type="text" placeholder="Full Name" required>
+      <input id="email" type="email" placeholder="Email Address" required>
+      <div class="password-wrapper">
+        <input id="password" type="password" placeholder="Password" required>
+        <span id="togglePassword" class="toggle-password">
+          <!-- 👁️ Eye icon -->
+          <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+        </span>
+      </div>
+      <button type="submit">Register</button>
+    </form>
+    <p id="msg"></p>
+    <p>Already have an account? <a href="login.html">Login</a></p>
+  </div>
+
+  <script>
+    // -------------------- PASSWORD TOGGLE --------------------
+    const passwordInput = document.getElementById('password');
+    const togglePassword = document.getElementById('togglePassword');
+    const eyeIcon = document.getElementById('eyeIcon');
+
+    togglePassword.addEventListener('mousedown', () => {
+      passwordInput.setAttribute('type', 'text');
+      eyeIcon.innerHTML = `
+        <path d="M17.94 17.94A10.94 10.94 0 0 1 12 20
+                 c-7 0-11-8-11-8a20.29 20.29 0 0 1 5.06-6.06M9.88 9.88
+                 A3 3 0 0 1 12 15a3 3 0 0 1-2.12-5.12z"/>
+        <line x1="1" y1="1" x2="23" y2="23"/>
+      `;
+    });
+    togglePassword.addEventListener('mouseup', () => {
+      passwordInput.setAttribute('type', 'password');
+      eyeIcon.innerHTML = `
+        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+        <circle cx="12" cy="12" r="3"/>
+      `;
+    });
+    togglePassword.addEventListener('mouseleave', () => {
+      passwordInput.setAttribute('type', 'password');
+      eyeIcon.innerHTML = `
+        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+        <circle cx="12" cy="12" r="3"/>
+      `;
+    });
+
+    // -------------------- REGISTER --------------------
+    document.getElementById('registerForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = passwordInput.value;
+      const msg = document.getElementById('msg');
+
+      try {
+        const res = await fetch('/api/users/register', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({ name, email, password })
+        });
+
+        const data = await res.json();
+        if (data.user) {
+          msg.textContent = 'Registration successful!';
+          msg.className = 'success';
+          localStorage.setItem('user', JSON.stringify(data.user));
+          setTimeout(() => location.href = 'index.html', 1000);
+        } else {
+          msg.textContent = data.error || 'Registration failed';
+          msg.className = 'error';
+        }
+      } catch (err) {
+        msg.textContent = 'Server error. Please try again.';
+        msg.className = 'error';
+      }
+    });
+
+    // -------------------- THEME TOGGLE --------------------
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggle = document.getElementById('themeToggle');
+      const isLight = localStorage.getItem('theme') === 'light';
+
+      if (isLight) applyLightMode();
+
+      toggle.addEventListener('click', () => {
+        const light = document.body.classList.toggle('light-mode');
+        document.querySelectorAll('.register-card, .register-card input, .register-card a')
+          .forEach(el => el.classList.toggle('light-mode'));
+        localStorage.setItem('theme', light ? 'light' : 'dark');
+        toggle.textContent = light ? '🌙 Dark Mode' : '☀️ Light Mode';
+      });
+
+      function applyLightMode() {
+        document.body.classList.add('light-mode');
+        document.querySelectorAll('.register-card, .register-card input, .register-card a')
+          .forEach(el => el.classList.add('light-mode'));
+        toggle.textContent = '🌙 Dark Mode';
+      }
+    });
+  </script>
+</body>
+</html>

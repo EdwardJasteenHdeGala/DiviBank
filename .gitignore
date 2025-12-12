@@ -1,0 +1,56 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Logs
+logs/
+*.log
+*.log.*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage reports
+coverage/
+*.lcov
+
+# Build outputs
+dist/
+build/
+.tmp/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE/editor settings
+.vscode/
+.idea/
+*.swp
+
+# Cache
+.cache/
+.parcel-cache/
+.next/
+out/
+
+# Public uploads (if any)
+public/uploads/
+
+# Data (optional: keep db.json tracked if you want version control)
+data/*.json
+!data/db.json   # keep db.json under version control, ignore other JSON files
+
+# Misc
+*.tgz
+*.zip

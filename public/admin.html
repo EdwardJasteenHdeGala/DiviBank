@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>DiviBank — Admin Panel</title>
+
+  <!-- ✅ Fonts & Theme -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Orbitron:wght@500;700&family=Poppins:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #1f2937, #0f172a);
+      font-family: 'Inter', sans-serif;
+      color: #e5e7eb;
+      margin: 0;
+    }
+    body.light-mode {
+      background: #f3f4f6;
+      color: #1f2937;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: linear-gradient(to right, #0f172a, #1f2937);
+      color: #16a34a;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.8);
+    }
+    header.light-mode {
+      background: #ffffff;
+      color: #16a34a;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    }
+
+    #themeToggle {
+      background: #16a34a;
+      color: white;
+      border: none;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      margin-left: 1rem;
+    }
+
+    nav a {
+      margin-left: 1rem;
+      color: #e5e7eb;
+      text-decoration: none;
+      font-weight: 600;
+      font-family: 'Poppins', sans-serif;
+      transition: color 0.2s ease, text-shadow 0.2s ease;
+    }
+    nav a:hover {
+      color: #22c55e;
+      text-shadow: 0 0 6px rgba(34,197,94,0.6);
+    }
+    nav a.light-mode {
+      color: #1f2937;
+    }
+    nav a.light-mode:hover {
+      color: #16a34a;
+      text-shadow: none;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .card {
+      background: linear-gradient(145deg, #2d3748, #1f2937);
+      border: 1px solid #4b5563;
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: inset 0 0 12px rgba(22,163,74,0.25), 0 4px 12px rgba(0,0,0,0.6);
+    }
+    .card.light-mode {
+      background: #ffffff;
+      border: 1px solid #d1d5db;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .card h2 {
+      font-family: 'Orbitron', sans-serif;
+      color: #16a34a;
+      text-shadow: 0 0 4px rgba(22,163,74,0.5);
+      margin-top: 0;
+    }
+
+    ul { list-style: none; padding: 0; }
+    li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid #4b5563;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    li:last-child { border-bottom: none; }
+
+    .status-approved { color: #16a34a; }
+    .status-pending { color: #f59e0b; }
+    .status-rejected { color: #dc2626; }
+
+    .button-group button {
+      margin-left: 0.5rem;
+      padding: 0.4rem 0.8rem;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+    .button-group button:hover {
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
+    .approve-btn { background: #16a34a; color: white; }
+    .reject-btn { background: #dc2626; color: white; }
+
+    .role-admin { color: #22c55e; }
+    .role-user { color: #e5e7eb; }
+
+    .highlight { font-weight: bold; color: #22c55e; text-shadow: 0 0 4px rgba(34,197,94,0.5); }
+
+    .verified-badge {
+      font-weight: 600;
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+    }
+    .verified-true { background: #16a34a; color: white; }
+    .verified-false { background: #dc2626; color: white; }
+
+    .loading { text-align: center; font-style: italic; color: #9ca3af; }
+    .empty { text-align: center; color: #9ca3af; font-weight: 500; }
+
+    .progress-container {
+      width: 100%;
+      background: #1f2937;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+    .progress-container.light-mode {
+      background: #e5e7eb;
+    }
+    .progress-bar {
+      width: 0%;
+      height: 12px;
+      background: linear-gradient(to right, #16a34a, #22c55e);
+      border-radius: 8px;
+      transition: width 0.5s ease;
+    }
+
+    .filter-bar {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .filter-bar input, .filter-bar select {
+      flex: 1;
+      padding: 0.5rem;
+      border-radius: 6px;
+      border: 1px solid #4b5563;
+      background: #2d3748;
+      color: #e5e7eb;
+    }
+    .filter-bar input.light-mode, .filter-bar select.light-mode {
+      background: #ffffff;
+      color: #1f2937;
+      border: 1px solid #d1d5db;
+    }
+
+    .analytics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+    .analytics-card {
+      background: #2d3748;
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: inset 0 0 8px rgba(22,163,74,0.25);
+    }
+    .analytics-card.light-mode {
+      background: #ffffff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .analytics-card h3 {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      color: #16a34a;
+    }
+    .analytics-card p {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #22c55e;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>DiviBank Admin</h1>
+  <nav>
+    <a href="index.html">Dashboard</a>
+    <a href="loans.html">My Loans</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="#" onclick="logout()">Logout</a>
+    <button id="themeToggle">☀️ Light Mode</button>
+  </nav>
+</header>
+
+<main>
+  <!-- Loan Approvals -->
+  <section class="card">
+    <h2>Loan Approvals</h2>
+    <div class="progress-container">
+      <div id="loanProgressBar" class="progress-bar"></div>
+    </div>
+    <ul id="loanApprovals">
+      <li class="loading">Loading loans...</li>
+    </ul>
+  </section>
+
+  <!-- User Management -->
+  <section class="card">
+    <h2>User Management</h2>
+    <div class="filter-bar">
+      <input type="text" id="searchUser" placeholder="Search by name or email..." aria-label="Search users" />
+      <select id="filterRole" aria-label="Filter by role">
+        <option value="">All Roles</option>
+        <option value="admin">Admins</option>
+        <option value="user">Users</option>
+      </select>
+      <select id="filterVerified" aria-label="Filter by verification">
+        <option value="">All</option>
+        <option value="true">Verified</option>
+        <option value="false">Not Verified</option>
+      </select>
+    </div>
+    <ul id="userList">
+      <li class="loading">Loading users...</li>
+    </ul>
+  </section>
+
+  <!-- Contact Messages -->
+  <section class="card">
+    <h2>Contact Messages</h2>
+    <ul id="messageList">
+      <li class="loading">Loading messages...</li>
+    </ul>
+  </section>
+
+  <!-- Reports & Analytics -->
+  <section class="card">
+    <h2>Reports & Analytics</h2>
+    <div class="analytics-grid">
+      <div class="analytics-card">
+        <h3>Total Loans</h3>
+        <p id="totalLoans">...</p>
+      </div>
+      <div class="analytics-card">
+        <h3>Approved Loans</h3>
+        <p id="approvedLoans">...</p>
+      </div>
+      <div class="analytics-card">
+        <h3>Active Users</h3>
+        <p id="activeUsers">...</p>
+      </div>
+      <div class="analytics-card">
+        <h3>Pending Messages</h3>
+        <p id="pendingMessages">...</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="assets/js/admin.js"></script>
+<script>
+function logout() {
+  localStorage.removeItem('user');
+  location.href = 'login.html';
+}
+
+// ===== Theme Toggle =====
+document.addEventListener('DOMContentLoaded', () => {
+  const toggle = document.getElementById('themeToggle');
+  const isLight = localStorage.getItem('theme') === 'light';
+
+  if (isLight) applyLightMode();
+
+  toggle.addEventListener('click', () => {
+    const light = document.body.classList.toggle('light-mode');
+    document.querySelectorAll('header, .card, nav a, .filter-bar input, .filter-bar select, .analytics-card, .progress-container')
+      .forEach(el => el.classList.toggle('light-mode'));
+    localStorage.setItem('theme', light ? 'light' : 'dark');
+    toggle.textContent = light ? '🌙 Dark Mode' : '☀️ Light Mode';
+  });
+
+  function applyLightMode() {
+    document.body.classList.add('light-mode');
+    document.querySelectorAll('header, .card, nav a, .filter-bar input, .filter-bar select, .analytics-card, .progress-container')
+      .forEach(el => el.classList.add('light-mode'));
+    toggle.textContent = '🌙 Dark Mode';
+  }
+});
+</script>
+</body>
+</html>
